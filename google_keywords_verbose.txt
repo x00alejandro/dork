@@ -1,9 +1,10 @@
-filetype:log "PHP Parse error" | "PHP Warning" | "PHP Error"
-filetype:log "See `ipsec --copyright"
+### DORK TYPE: Best ###
+filetype:log 'PHP Parse error' | 'PHP Warning' | 'PHP Error'
+filetype:log 'See `ipsec --copyright'
 filetype:log access.log -CVS
 filetype:log cron.log
-filetype:log intext:"ConnectionManager2"
-filetype:log inurl:"password.log"
+filetype:log intext:'ConnectionManager2'
+filetype:log inurl:'password.log'
 filetype:log inurl:password.log
 intitle:index.of cleanup.log
 intitle:index.of filetype:log
@@ -15,8 +16,10 @@ filetype:syslog
 allintext:username filetype:log
 inurl:error filetype:log
 inurl:nginx filetype:log
-intitle:"index of" inurl:app.conf
-intitle:"index of" inurl:conf
+
+### DORK TYPE: Config ###
+intitle:'index of' inurl:app.conf
+intitle:'index of' inurl:conf
 Name Last modified Size Description inurl:conf
 filetype:conf
 configuration filetype:txt
@@ -35,6 +38,8 @@ inurl:secret filetype:yaml
 inurl:conf filetype:xml
 inurl:Makefile.toml
 inurl:Makefile 
+
+### DORK TYPE: Database ###
 inurl:db.sql
 inurl:db.sqlite
 inurl:setup.sql
@@ -44,44 +49,50 @@ inurl:backup.sql
 inurl:db filetype:sql
 inurl:backup filetype:sql
 create table  filetype:sql
-"-- MySQL dump" "Server version" "Table structure for table"
+'-- MySQL dump' 'Server version' 'Table structure for table'
+
+### DORK TYPE: Git ###
 inurl:.git-credentials
 inurl:.gitconfig
-intext:"index of /.git" "parent directory"
-filetype:git -github.com inurl:"/.git"
-(intext:"index of /.git") ("parent directory")
+intext:'index of /.git' 'parent directory'
+filetype:git -github.com inurl:'/.git'
+(intext:'index of /.git') ('parent directory')
 inurl:ORIG_HEAD
-intitle:"index of" ".gitignore"
-".git" intitle:"Index of"
-(intext:"index of /.git") ("parent directory")
-"Parent Directory" "Last modified" git
+intitle:'index of' '.gitignore'
+'.git' intitle:'Index of'
+(intext:'index of /.git') ('parent directory')
+'Parent Directory' 'Last modified' git
+
+### DORK TYPE: Login ###
 site: target.com inurl: admin |  administrator |  adm |  login |  l0gin |  wp-login
 inurl:wp-login
 inurl:login
 inurl:user-login
-inurl:"/wp-login.php?action=lostpassword"
+inurl:'/wp-login.php?action=lostpassword'
 inurl:& intext:admin intext:login
-site:password.*.* intitle:"login"
-site:portal.*.* intitle:"login"
-site:sftp.*.*/ intext:"login" intitle:"server login"
-site:user.*.* intitle:"login"
-"Joomla! Administration Login" inurl:"/index.php"
+site:password.*.* intitle:'login'
+site:portal.*.* intitle:'login'
+site:sftp.*.*/ intext:'login' intitle:'server login'
+site:user.*.* intitle:'login'
+'Joomla! Administration Login' inurl:'/index.php'
 intext:Joomla 1.6 inurl:index.php/login
-intitle:"grafana" inurl:"/grafana/login" "Forgot your password"
-inurl:login "Welcome to Grafana"
-php jembut.php "/account/login/"
-php jembut.php "/customer/account/login/referer/"
-intext:"HostingAccelerator" intitle:"login" +"Username" -"news" -demo
-intext:"IMail Server Web Messaging" intitle:login
+intitle:'grafana' inurl:'/grafana/login' 'Forgot your password'
+inurl:login 'Welcome to Grafana'
+php jembut.php '/account/login/'
+php jembut.php '/customer/account/login/referer/'
+intext:'HostingAccelerator' intitle:'login' +'Username' -'news' -demo
+intext:'IMail Server Web Messaging' intitle:login
 inurl:/eftclient/account/login.htm
 inurl:/pro_users/login
-inurl:"servicedesk/customer/user/login"
-inurl:"/phpmyadmin/user_password.php
-inurl:"/?q=user/password/"
-"Login Pages":"site:target.com inurl:login | inurl:signin | intitle:Login | intitle: signin | inurl:auth"
-inurl:"/carbon/admin/login.jsp"
-inurl:webvpn.html "login" "Please enter your"
+inurl:'servicedesk/customer/user/login'
+inurl:'/phpmyadmin/user_password.php
+inurl:'/?q=user/password/'
+'Login Pages':'site:target.com inurl:login | inurl:signin | intitle:Login | intitle: signin | inurl:auth'
+inurl:'/carbon/admin/login.jsp'
+inurl:webvpn.html 'login' 'Please enter your'
 inurl:/administrator/index.php?autologin=1
+
+### DORK TYPE: Open redirect ###
 site:*.redacted.com AND (inurl:url OR inurl:continue OR inurl:returnto OR inurl:redirect OR inurl:return OR inurl:target OR inurl:site OR inurl:view  OR inurl:path)
 inurl:url OR inurl:continue OR inurl:returnto OR inurl:redirect OR inurl:return OR inurl:target OR inurl:site OR inurl:view  OR inurl:path
 inurl:url
@@ -134,10 +145,12 @@ inurl:returnTo
 inurl:return_to
 inurl:return_path
 inurl:path
-.php?redirect="
+.php?redirect='
 all.php?redirect=
 gallery.php?redirect=
 include.php?redirect=
+
+### DORK TYPE: SQL Injection ###
 .php?module=
 ?action=
 ?page=
@@ -356,6 +369,8 @@ voteList.php?item_ID=
 whatsnew.php?idCategory=
 www/index.php?page=
 zb/view.php?uid=
+
+### DORK TYPE: XSS ###
 inurl:& inurl:test
 inurl:& inurl:quiz
 inurl:& inurl:survey
