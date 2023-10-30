@@ -1,4 +1,5 @@
 import sys
+import subprocess
 from github_dork import GitHubDork
 from google_dork import GoogleDork
 
@@ -11,7 +12,35 @@ def help():
     keyword          the keyword to be used in generating the URLs
     """)
 
+def check_and_install_requirements():
+    try:
+        with open("requirements.txt", "r") as requirements_file:
+            required_libraries = requirements_file.read().splitlines()
+
+        missing_libraries = []
+
+        for library in required_libraries:
+            try:
+                __import__(library)
+            except ImportError:
+                missing_libraries.append(library)
+
+        if missing_libraries:
+            print("The following required libraries are missing:")
+            for library in missing_libraries:
+                print(library)
+            print("Installing missing libraries...")
+            for library in missing_libraries:
+                subprocess.check_call(["pip", "install", library])
+            print("Installation completed.")
+        else:
+            print("All required libraries are already installed.")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
 def main():
+    # check_and_install_requirements()
+
     github_raw_flag = False
     github_verbose_flag = False
     google_flag = False
@@ -51,7 +80,6 @@ def main():
     if google_flag:
         google_dork = GoogleDork(param)
         google_dork.generate_raw_links()
-        google_dork.generate_verbose_links()
 
 if __name__ == "__main__":
     main()
